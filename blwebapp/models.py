@@ -11,6 +11,7 @@ class Project(models.Model):
     name = models.CharField(max_length=64)
     address = models.CharField(max_length=256)
     description = models.CharField(max_length=256)
+    create_at = models.DateTimeField(auto_now_add=True)
     headcount = models.IntegerField()
     target = models.IntegerField()
     received_pool = models.IntegerField(default=0)
