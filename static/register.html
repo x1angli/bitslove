@@ -11,11 +11,11 @@
 	<body>
         <div class="right-area">
             <div class="login-tip">
-                <span class="tip-gray">已有账号？</span>
-                <a href="{% url 'login' %}" class="register">去登陆</a>
+                <span class="tip-gray">Already with us? </span>
+                <a href="{% url 'login' %}" class="register">Sign-in</a>
             </div>
             <div class="register-area">
-                <p class="form_title">注册</p>
+                <p class="form_title">Sign up your love</p>
                 <hr/>
                 <p class="errmsg-area">{{ errmsg }}</p>
                 <form method="post" action="{% url 'register_api' %}">
@@ -25,7 +25,7 @@
                                 <i class="glyphicon glyphicon-envelope"></i>
                             </span>
                             <input type="text" class="form-control" name="name" id="id_name_regist"
-                                   placeholder="请输入用户名" autofocus="autofocus">
+                                   placeholder="Your user name" autofocus="autofocus">
                         </div>
                     </div>
                     <div class="form-group">
@@ -34,7 +34,7 @@
                                 <i class="glyphicon glyphicon-envelope"></i>
                             </span>
                             <input type="email" class="form-control" name="email" id="id_email_regist"
-                                   placeholder="请输入邮箱" autofocus="autofocus">
+                                   placeholder="Your email" autofocus="autofocus">
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +43,7 @@
                                 <i class="glyphicon glyphicon-envelope"></i>
                             </span>
                             <input type="text" class="form-control" name="phone" id="id_phone_regist"
-                                   placeholder="请输入手机号" autofocus="autofocus">
+                                   placeholder="Your phone number" autofocus="autofocus">
                         </div>
                     </div>
                     <div class="form-group">
@@ -52,11 +52,11 @@
                                 <i class="glyphicon glyphicon-lock"></i>
                             </span>
                             <input type="password" class="form-control" name="password" id="id_password"
-                                   placeholder="请输入密码" required="required">
+                                   placeholder="Your password" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">注册</button>
+                        <button type="submit" class="btn btn-success">Sign-up</button>
                     </div>
                 </form>
             </div>
