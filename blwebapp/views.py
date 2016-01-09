@@ -40,7 +40,7 @@ def login_required(func):
 
 def to_index(request):
     """跳转到首页"""
-    return render(request, 'blwebapp/index.html')
+    return render(request, 'index.html')
 
 
 class ProjectList(View):
@@ -208,7 +208,6 @@ class SenderType(Enum):
 class ReceiverType(Enum):
     PROJECT = 'project'
     RECEIVER = 'receiver'
-
 
 
 @require_POST
