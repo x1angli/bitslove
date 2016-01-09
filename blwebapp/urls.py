@@ -4,7 +4,7 @@ from django.conf.urls import url
 from blwebapp import views
 
 urlpatterns = [
-    url(r'^$', views.to_index),
+    url(r'^$', views.to_index_en),
     url(r'^index.html$', views.to_index),
     url(r'^index_cht.html$', views.to_index_cht),
     url(r'^index_en.html$', views.to_index_en),
