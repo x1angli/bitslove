@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.core.management.base import BaseCommand
-from user.models import User
-
+from blwebapp.models import User
 
 
 class Command(BaseCommand):
@@ -10,8 +9,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        user = User.objects.create(name='root', email='root@bitslove.com', is_superuser=True)
+        user = User.objects.create(name='root', email='root@bitslove.com', phone='110', is_superuser=True)
         user.set_password('root', save=True)
 
-        self.stdout.write("新建一个超级用户")
+        self.stdout.write("Superuser created: %s" % user)
 

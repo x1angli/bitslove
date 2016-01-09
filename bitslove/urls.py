@@ -18,11 +18,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from blwebapp import urls as blwebapp_urls
-from user import urls as user_urls
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(blwebapp_urls)),
-    url(r'^', include(user_urls)),
 ]
