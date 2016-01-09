@@ -4,6 +4,7 @@ from functools import wraps
 
 from django.db import transaction
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 
@@ -32,6 +33,11 @@ def login_required(func):
         else:
             return func(*args, **kwargs)
     return wrapper
+
+
+def to_index(request):
+    """跳转到首页"""
+    return render(request, 'blwebapp/index.html')
 
 
 class ProjectList(View):
