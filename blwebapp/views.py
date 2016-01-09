@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from enum import Enum
 from functools import wraps
+from time import strftime
 
 from django.db import transaction
 from django.shortcuts import render
@@ -43,6 +44,14 @@ def to_index(request):
     return render(request, 'index.html')
 
 
+def to_index_cht(request):
+    return render(request, 'index_cht.html')
+
+
+def to_index_en(request):
+    return render(request, 'index_en.html')
+
+
 class ProjectList(View):
 
     @method_decorator(require_super_user)
@@ -50,11 +59,13 @@ class ProjectList(View):
         projects = []
         for project in Project.objects.all():
             projects.append(dict(
+                id=project.id,
                 name=project.name,
                 address=project.address,
                 description=project.description,
                 headcount=project.headcount,
                 target=project.target,
+                create_at=project.create_at.strftime("%Y-%m-%d %H:%M:%S"),
                 received_pool=project.received_pool,
                 received_total=project.received_total,
             ))
@@ -76,8 +87,22 @@ class ProjectList(View):
 
 class ProjectDetail(View):
 
+    @method_decorator(require_super_user)
     def get(self, request, project_id):
-        pass
+        project = Project.objects.get(id=project_id)
+
+        data = dict(
+            id=project.id,
+            name=project.name,
+            address=project.address,
+            description=project.description,
+            headcount=project.headcount,
+            target=project.target,
+            create_at=project.create_at,
+            received_pool=project.received_pool,
+            received_total=project.received_total,
+        )
+        return JsonResponse(status=200, data=data)
 
     @method_decorator(require_super_user)
     def put(self, request, project_id):
@@ -116,8 +141,8 @@ class ReceiverDetail(View):
 
     @method_decorator(require_super_user)
     def get(self, request, project_id, receiver_id):
-        receiver = Receiver.objects.get(id=receiver_id)
 
+        receiver = Receiver.objects.get(id=receiver_id)
         data = dict(
                 id=receiver.id,
                 name=receiver.name,
@@ -157,6 +182,9 @@ class TransactionList(View):
         sender_type = SenderType(data.get('sender_type'))
         receiver_type = ReceiverType(data.get('receiver_type'))
         amount = int(data.get('amount'))
+        if sender_type == SenderType.PROJECT and not request.user.is_superuser:
+            return JsonResponse(status=401, data=dict(errmsg="普通用户没有权限转移项目资金"))
+
         with transaction.atomic():
             transation = Transaction.objects.create(sender=sender, receiver=receiver, sender_type=sender_type.value,
                                                     receiver_type=receiver_type.value, amount=amount)
