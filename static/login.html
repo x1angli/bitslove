@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/user.css' %}" rel="stylesheet" type="text/css"/>
-        <title>登陆</title>
+        <title>Sign-in</title>
 	</head>
 	<body>
         <div class="right-area">
-            <div class="login-tip">
-                <span class="tip-gray">没有账号？</span>
-                <a href="{% url 'register' %}" class="register">立即注册</a>
+            <div class="login-tip" style="padding-bottom: 20px">
+                <span class="tip-gray">Don't have an account yet? </span>
+                <a class="btn btn-warning" style="width: 120px; height: 30px; color: white" href = "{% url 'register' %}">Donate Now!</a>
             </div>
             <div class="login-area">
-                <p class="form_title">登陆</p>
+                <p class="form_title">Sign-in</p>
                 <hr/>
                 <p class="errmsg-area">{{ errmsg }}</p>
                 <form onsubmit="return isNull_login(this)" method="post" action="{% url 'login_api' %}">
@@ -24,7 +24,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
-                            <input type="text" class="form-control" name="name" id="id_name" placeholder="请输入用户名"
+                            <input type="text" class="form-control" name="name" id="id_name" placeholder="Your user ID"
                                    autofocus="autofocus" required="required" oninput="setCustomValidity('')">
                         </div>
                     </div>
@@ -35,15 +35,15 @@
                                 <i class="glyphicon glyphicon-lock"></i>
                             </span>
                             <input type="password" class="form-control" name="password" id ="id_userpassword"
-                                   placeholder="请输入密码" required="required">
+                                   placeholder="Your password" required="required">
                         </div>
                     </div>
 {#                    <input type="hidden" name="next" value="{{ next }}" />#}
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">登录</button>
+                        <button type="submit" class="btn btn-success">Sign-in</button>
                     </div>
                     <div class="form-group">
-                        <label for="remember_me" class="remember_style"><input type="checkbox" id="remember_me" class="checkbox-style">记住我</label>
+                        <label for="remember_me" class="remember_style"><input type="checkbox" id="remember_me" class="checkbox-style">Remember me</label>
                     </div>
                 </form>
             </div>
