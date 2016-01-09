@@ -10,7 +10,7 @@ from django.views.generic import View
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import authenticate
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
 
 from blwebapp.models import Project, Receiver, Transaction, User
@@ -53,6 +53,14 @@ def to_index_en(request):
 
 def to_blockexplorer(request):
     return render(request, 'blockexplorer.html')
+
+
+def to_login(request):
+    return render(request, 'login.html')
+
+
+def to_regester(request):
+    return render(request, 'register.html')
 
 
 class ProjectList(View):
@@ -252,10 +260,10 @@ def login(request):
     user = authenticate(username=name, password=password)
 
     if not user:
-        return JsonResponse(data=dict(errmsg='用户名与密码不匹配'), status=400)
+        return render(request, 'login.html', {"errmsg": "账号和密码不匹配"})
 
     django_login(request, user)
-    return JsonResponse(status=200, data=dict(id=user.id))
+    return HttpResponseRedirect('/')
 
 
 @require_POST
@@ -273,10 +281,10 @@ def register(request):
     name = data.get('name')
     password = data.get('password')
 
-    if User.objects.filter(email=email).exists():
-        return JsonResponse(status=400, data=dict(errmsg='邮箱已经存在'))
+    if User.objects.filter(name=name).exists():
+        return render(request, 'register.html', {"errmsg": "用户名已经存在"})
 
     user = User.objects.create(name=name, email=email, phone=phone)
     user.set_password(password, save=True)
-    return JsonResponse(status=200, data=dict(id=user.id))
+    return HttpResponseRedirect('login.html')
 

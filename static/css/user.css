@@ -1,0 +1,191 @@
+body{
+    background-color: #fafafa;
+    font-family: "Microsoft Yahei";
+}
+
+.right-area{
+    position: relative;
+    width: auto;
+    height: 100%;
+    margin-top: 140px;
+}
+
+/*
+div.header{
+    position: absolute;
+    left: 35%;
+    top: 75px;
+}
+*/
+
+.header_font{
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+form{
+    width: 70%;
+    /*height: 70%;*/
+    margin: 40px auto;
+}
+
+.form_title{
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+}
+
+/*
+.login-area, .findpw-area, .register-area, .header-area{
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e1e1e1;
+    -webkit-box-shadow: 0 0 3px #DDDDDD,inset 0 0 3px #fff;
+    box-shadow: 0 0 3px #DDDDDD,inset 0 0 3px #fff;
+    background-color: #ffffff;
+    top: 18%;
+}
+*/
+
+.login-area, .findpw-area, .register-area, .login-tip, .findpw-tip{
+    position: relative;
+    margin: 0 auto;
+    width: 450px;
+}
+
+.login-area, .findpw-area, .register-area{
+    padding: 20px;
+    border: 1px solid #e1e1e1;
+    /*
+    -webkit-box-shadow: 0 0 3px #DDDDDD,inset 0 0 3px #fff;
+    box-shadow: 0 0 3px #DDDDDD,inset 0 0 3px #fff;
+    */
+    background-color: #ffffff;
+    top: 18%;
+    /*
+    border-radius:20px;
+    */
+}
+
+.login-tip{
+    top: 16%;
+    text-align: right;
+}
+
+.findpw-tip{
+    top: 16%;
+    width: 600px;
+    text-align: right;
+}
+
+div.login-area{
+    height: 320px;
+
+}
+
+div.findpw-area{
+    width: 600px;
+    height: 350px;
+}
+
+div.register-area{
+    height: 350px;
+}
+
+button{
+    background: #101010;
+    width: 100%;
+    color: #ffffff;
+}
+
+.tip-gray{
+    color: #888888;
+    font-weight: 400;
+}
+
+.remember_style{
+    float: left;
+    color: #888888;
+    font-weight: 400;
+}
+
+.checkbox-style{
+    height:13px;
+    vertical-align:text-top;
+}
+
+.register:link,.register:visited,.register.hover,.register.active{
+/*
+    text-decoration: underline;
+    */
+    float: right;
+}
+
+.forget:link,.forget:visited,.forget.hover,.forget.active{
+    float: right;
+    color: #888888;
+}
+
+.tip{
+    text-align: center;
+    margin: auto 0;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #78757c;
+}
+
+.warning_info{
+    margin: auto 0;
+    font-size: 12px;
+    color: #78757c;
+}
+
+span.current{
+    color: #5cb85c;
+}
+
+hr.current{
+    border-top-color: #5cb85c;
+    border-width: 2px;
+}
+
+div.current{
+    display: inline;
+}
+
+hr{
+    border-top: 1px solid #DDDDDD;
+}
+
+img.icon{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+}
+
+.errmsg-area{
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    margin-left: 61.203px;
+}
+
+.modal_message {
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 40%;
+    font-family: "Microsoft Yahei";
+}
+
+.modal_message > p > a{
+    color: #FF9933;
+    font-weight: 500;
+}
+
+a:link {color:#5cb85c;}
+a:visited {color:#5cb85c;}
+a:hover {color:#FF9933;}
+a:active {color:#5cb85c;}
