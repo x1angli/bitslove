@@ -12,7 +12,8 @@
             float: left;
             background: #FF6F01;
             padding: 0.5em 2em;
-            margin-bottom: 0px; margin-top: 0px;
+            margin-bottom: 0px;
+            margin-top: 0px;
             height: 100%;
         }
 
@@ -28,6 +29,9 @@
 
         .navbar-bitslove a:hover {
             color: black;
+        }
+        body {
+            padding: 50px;
         }
 
     </style>
@@ -58,6 +62,82 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+
+<div style="height: 20px"></div>
+<div style="width:100%; clear:both;">
+    <h2>Outbound Transactions</h2>
+
+
+    <div class="txdiv">
+        <table class="table table-striped" cellpadding="0" cellspacing="0"
+               style="padding:0px;float:left;margin:0px;width:100%">
+            <tr>
+                <th colspan="3" align="left">712f08397106461cdcea2f57d72
+                    <span class="pull-right">2016-01-09 08:52:36</span></th>
+            </tr>
+            <tr>
+                <td width="500px" class="txtd hidden-phone"><a
+                        href="?address=fdsaf341">Xiang Li</a> </td>
+                <td width="48px" class="hidden-phone" style="padding:4px;text-align:center;vertical-align:middle;"><img
+                        src="{% static 'images/arrow_right_red.png' %}"/></td>
+                <td class="txtd"><a
+                        href="?address=1F1MAvhTKg2VG29w8cXsiSN2PJ8gSsrJw">Pink Ribbon</a>  <span
+                        class="pull-right hidden-phone">100 Yuan</span><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <divclass="txdiv">
+        <table class="table table-striped" cellpadding="0" cellspacing="0"
+               style="padding:0px;float:left;margin:0px;width:100%">
+            <tr>
+                <th colspan="3" align="left">egLiy9diAERJkLsBSJErxAA9
+                    <span class="pull-right">2016-01-09 08:43:36</span></th>
+            </tr>
+            <tr>
+                <td width="500px" class="txtd hidden-phone"><a
+                        href="?address=fdsaf341">Xiang Li</a> </td>
+                <td width="48px" class="hidden-phone" style="padding:4px;text-align:center;vertical-align:middle;"><img
+                        src="{% static 'images/arrow_right_red.png' %}"/></td>
+                <td class="txtd"><a
+                        href="?address=2F3MAvhTKt4VG29w8cXsiSN2PJ9gTs">One Child One Computer</a>  <span
+                        class="pull-right hidden-phone">100 Yuan</span><br/>
+                </td>
+            </tr>
+        </table>
+        <div style="padding-bottom:30px;width:100%;text-align:right;clear:both">
+            Subtotal: <button class="btn btn-warning cb"><span>200 Yuan</span></button>
+        </div>
+    </div>
+
+    <h2>Inbound Transactions</h2>
+
+
+    <div class="txdiv">
+        <table class="table table-striped" cellpadding="0" cellspacing="0"
+               style="padding:0px;float:left;margin:0px;width:100%">
+            <tr>
+                <th colspan="3" align="left">af3412435435324532
+                    <span class="pull-right">2016-03-09 08:52:26</span></th>
+            </tr>
+            <tr>
+                <td width="500px" class="txtd hidden-phone"><b>No inputs (newly Deposited)</b></td>
+                <td width="48px" class="hidden-phone" style="padding:4px;text-align:center;vertical-align:middle;"><img
+                        src="{% static 'images/arrow_right_green.png' %}"/></td>
+                <td class="txtd"><a
+                        href="?address=fdsaf341">Xiang Li</a>  <span
+                        class="pull-right hidden-phone">300 Yuan</span><br/>
+                </td>
+            </tr>
+        </table>
+        <div style="padding-bottom:30px;width:100%;text-align:right;clear:both">
+            Subtotal: <button class="btn btn-success cb"><span>300 Yuan</span></button>
+        </div>
+    </div>
+
+</div>
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
