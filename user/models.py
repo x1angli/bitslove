@@ -11,11 +11,12 @@ class User(models.Model):
     """
 
     objects = BaseUserManager()  # 使用django自带的user object manager, 以复用django authenticate和django login.
-    USERNAME_FIELD = 'email'  # 用于django authenticate的字段
+    USERNAME_FIELD = 'name'  # 用于django authenticate的字段
     REQUIRED_FIELDS = []
 
-    name = models.CharField(max_length=16, null=True)
-    email = models.CharField(max_length=128, unique=True)
+    name = models.CharField(max_length=16, unique=True)
+    email = models.CharField(max_length=128, unique=True, null=True)
+    phone = models.CharField(max_length=11, unique=True, null=True)
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add=True)

@@ -67,4 +67,4 @@ Icon
 **/migrations/0*
 
 # local db file
-db.sqlite
+db.sqlite3

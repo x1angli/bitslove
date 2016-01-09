@@ -15,12 +15,12 @@ def login(request):
 
     data = request.DATA
 
-    email = data.get('email')
+    name = data.get('name')
     password = data.get('password')
-    user = authenticate(username=email, password=password)
+    user = authenticate(username=name, password=password)
 
     if not user:
-        return JsonResponse(data=dict(errmsg='邮箱与密码不匹配'), status=400)
+        return JsonResponse(data=dict(errmsg='用户名与密码不匹配'), status=400)
 
     django_login(request, user)
     return JsonResponse(status=200, data=dict(id=user.id))
@@ -37,14 +37,14 @@ def logout(request):
 def register(request):
     data = request.DATA
     email = data.get('email')
+    phone = data.get('phone')
     name = data.get('name')
     password = data.get('password')
 
     if User.objects.filter(email=email).exists():
         return JsonResponse(status=400, data=dict(errmsg='邮箱已经存在'))
 
-    user = User.objects.create(name=name, email=email)
-    user.set_password(password)
-    user.save()
+    user = User.objects.create(name=name, email=email, phone=phone)
+    user.set_password(password, save=True)
     return JsonResponse(status=200, data=dict(id=user.id))
 
