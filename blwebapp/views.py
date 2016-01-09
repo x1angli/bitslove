@@ -98,12 +98,14 @@ class ReceiverList(View):
                 description=receiver.description,
                 target=receiver.target,
                 received=receiver.received,
+                project=receiver.project_id,
             ))
         return JsonResponse(status=200, data=dict(receivers=receivers))
 
 
 class ReceiverDetail(View):
 
+    @method_decorator(require_super_user)
     def get(self, request, project_id, receiver_id):
         receiver = Receiver.objects.get(id=receiver_id)
 
@@ -116,9 +118,11 @@ class ReceiverDetail(View):
                 description=receiver.description,
                 target=receiver.target,
                 received=receiver.received,
+                project=receiver.project_id,
         )
         return JsonResponse(status=200, data=data)
 
+    @method_decorator(require_super_user)
     def put(self, request, project_id, receiver_id):
 
         receiver = Receiver.objects.get(id=receiver_id)
@@ -172,8 +176,8 @@ class TransactionList(View):
 
 @login_required
 def get_transactions(request, user_id):
-    user = request.user
-    transactions = Transaction.objects.filter(sender=user.id, sender_type=SenderType.USER)
+    # user = request.user
+    transactions = Transaction.objects.filter(sender=user_id, sender_type=SenderType.USER.value)
     transactions_list = []
     for transaction in transactions:
         transactions_list.append(dict(

@@ -3,6 +3,7 @@
 from enum import Enum
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -21,6 +22,10 @@ class Project(models.Model):
             total += receiver.received
         return self.received_pool + total
 
+    def __str__(self):
+        return "Project %s: headcount: %s, target: %s, received_total: %s" % (
+            self.name, self.headcount, self.target, self.received_total)
+
 
 class Receiver(models.Model):
     name = models.CharField(max_length=64, null=True)
@@ -32,6 +37,10 @@ class Receiver(models.Model):
     received = models.IntegerField(default=0)
     project = models.ForeignKey(Project, related_name='receivers')
 
+    def __str__(self):
+        return "Receiver %s: target: %s, received :%s, project: %s" % (
+            self.name, self.target, self.received, self.project)
+
 
 class Transaction(models.Model):
     sender = models.IntegerField()
@@ -40,3 +49,7 @@ class Transaction(models.Model):
     receiver_type = models.CharField(max_length=7)
     amount = models.IntegerField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Transaction: sender: (%s, %s), receiver: (%s, %s), amount: %s" % (
+            self.sender_type, self.sender, self.receiver_type, self.receiver, self.amount)
