@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.core.management.base import BaseCommand
-from user.models import User
+from blwebapp.models import User
 
 
 class Command(BaseCommand):
