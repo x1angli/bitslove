@@ -51,6 +51,9 @@ def to_index_cht(request):
 def to_index_en(request):
     return render(request, 'index_en.html')
 
+def to_blockexplorer(request):
+    return render(request, 'blockexplorer.html')
+
 
 class ProjectList(View):
 

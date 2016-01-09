@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^index.html$', views.to_index),
     url(r'^index_cht.html$', views.to_index_cht),
     url(r'^index_en.html$', views.to_index_en),
+    url(r'^blockexplorer.html$', views.to_blockexplorer),
     url(r'^projects$', views.ProjectList.as_view()),
     url(r'^projects/(?P<project_id>[0-9]+)$', views.ProjectDetail.as_view()),
     url(r'^projects/(?P<project_id>[0-9]+)/receivers$', views.ReceiverList.as_view()),
