@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
 
+from blwebapp.forms import ProjectForm, ReceiverForm
 from blwebapp.models import Project, Receiver, Transaction, User
 
 
@@ -51,6 +52,7 @@ def to_index_cht(request):
 def to_index_en(request):
     return render(request, 'index_en.html')
 
+
 def to_blockexplorer(request):
     return render(request, 'blockexplorer.html')
 
@@ -61,6 +63,21 @@ def to_login(request):
 
 def to_regester(request):
     return render(request, 'register.html')
+
+
+def to_projects(request):
+    projects = Project.objects.all()
+    return render(request, 'get_projects.html', {'projects': projects})
+
+
+def to_add_project(request):
+    null_form = ProjectForm()
+    projects = Project.objects.all()
+    return render(request, 'add_project.html', {'null_form': null_form, 'projects': projects})
+
+
+def to_dialog(request):
+    return render(request, 'dialog.html')
 
 
 class ProjectList(View):
@@ -82,7 +99,7 @@ class ProjectList(View):
             ))
         return JsonResponse(status=200, data=dict(projects=projects))
 
-    @method_decorator(require_super_user)
+    # @method_decorator(require_super_user)
     def post(self, request):
         data = request.DATA
         name = data.get('name')

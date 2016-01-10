@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Make Donation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css'/> -->
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href={% static "css/bootstrap.css" %} rel='stylesheet' type='text/css'/>
 
 </head>
 <body>
@@ -41,12 +40,8 @@
   </div>
 </div>
 
-<!--
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
--->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 
 <script>
 
@@ -73,8 +68,9 @@
 
         $.ajax({
             type: "POST",
-            url: "python/form-process.py",
-            data: "id=" + receiverid + "&amount=" + amount,
+            url: "/transactions",
+            data: {
+            },
             success: function (text) {
                 $("#myModal").modal('hide');
             },
