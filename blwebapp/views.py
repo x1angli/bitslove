@@ -146,7 +146,7 @@ class ProjectDetail(View):
 
 class ReceiverList(View):
 
-    @method_decorator(require_super_user)
+    # @method_decorator(require_super_user)
     def get(self, request, project_id):
         project = Project.objects.get(id=project_id)
         receivers = []
@@ -167,7 +167,7 @@ class ReceiverList(View):
 
 class ReceiverDetail(View):
 
-    @method_decorator(require_super_user)
+    # @method_decorator(require_super_user)
     def get(self, request, project_id, receiver_id):
 
         receiver = Receiver.objects.get(id=receiver_id)
@@ -184,7 +184,7 @@ class ReceiverDetail(View):
         )
         return JsonResponse(status=200, data=data)
 
-    @method_decorator(require_super_user)
+    # @method_decorator(require_super_user)
     def put(self, request, project_id, receiver_id):
 
         receiver = Receiver.objects.get(id=receiver_id)

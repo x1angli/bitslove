@@ -13,11 +13,12 @@ $(function(){
             contentType: false,
             processData: false,
             success: function (data, status) {
-                receivers = data.receivers;
+                var receivers = data.receivers;
+                var project_id = data.id;
                 for( var i = 0; i < receivers.length; i++){
-                    id = receivers[i];
+                    var id = receivers[i];
                     $('#receivers-area').append(
-                        '<form action="/" method="put">' +
+                        '<form id="receiver_form'+ id +'" action="/" method="put">' +
                         'name:<br>' +
                         '<input type="text" name="name"><br>' +
                         'address:<br>' +
@@ -30,12 +31,26 @@ $(function(){
                         '<input type="text" name="description"><br>' +
                         'target:<br>' +
                         '<input type="text" name="target"><br>' +
-                        '<input type="button" value="Submit" id="projects_sub"' + id + '>' +
+                        '<input type="button" class="receiver_cls" value="Submit" data-id=' + id + ' id="receiver_sub">' +
                         '</form>'
                         );
                 }
+                $(".receiver_cls").click(function(){
+                    var id = this.getAttribute('data-id');
+                    var form = new FormData(document.getElementById("receiver_form" + id));
+                    $.ajax({
+                        type: 'PUT',
+                        url: '/projects/' + project_id + '/receivers/' + id,
+                        data: form,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data, status) {
+                            alert("success");
+                        }
+                    });
+                });
             }
         });
-
     });
 });
