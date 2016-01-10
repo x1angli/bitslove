@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/project.js' %}"></script>
+</head>
+<body>
+
+{% if null_form %}
+<form action="/projects" method="post" id="projects_form">
+    {{ null_form.as_table }}
+  <input type="button" value="Submit" id="projects_sub">
+</form>
+{% endif %}
+
+{#{% if receivers %}#}
+{#    Receiver List:#}
+{#    <form action="/projects" method="post">#}
+{#    {% for receiver in receviers %}#}
+{#        {{ receiver.as_table }}#}
+{#    {% endfor %}#}
+{#        <input type="submit" value="Submit">#}
+{#    </form>#}
+{#{% endif %}#}
+
+{#{{ receiver.as_table }}#}
+
+Project List:
+<table>
+    <tr><td>名称</td><td>地址</td><td>用途</td><td>受益人数</td><td>目标数额</td><td>受捐金额</td><td>受捐总额</td></tr>
+    {% for project in projects %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.address }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.headcount }}</td>
+            <td>{{ project.target }}</td>
+            <td>{{ project.received_pool }}</td>
+            <td>{{ project.received_total }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
