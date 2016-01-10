@@ -13,17 +13,44 @@ $(function(){
             contentType: false,
             processData: false,
             success: function (data, status) {
-                receivers = data.receivers;
-                var url = data.img_url;
-                $("#emptytip").hide();
-                $("#localimgList").prepend('<li data-id="' + data.img_id + '"><div class="imgdiv"><img id="' + data.img_id + '" src="' + data.img_url + '"/><p>' +
-                    '<label for="checkbox"><span class="imgName">' + data.img_name + '</span></label></p></div>' +
-                    '<div class="imgOperation"><span data-id="' + data.img_id + '" class="glyphicon glyphicon-trash" title="真滴删除么？"  data-toggle="popover" data-placement="bottom" ></span>' +
-                    '</div></li>');
-                $("[data-toggle='popover']").popover();
-                $("#upload").val("");
+                var receivers = data.receivers;
+                var project_id = data.id;
+                for( var i = 0; i < receivers.length; i++){
+                    var id = receivers[i];
+                    $('#receivers-area').append(
+                        '<form id="receiver_form'+ id +'" action="/" method="put">' +
+                        'name:<br>' +
+                        '<input type="text" name="name"><br>' +
+                        'address:<br>' +
+                        '<input type="text" name="address"><br>' +
+                        'gender:<br>' +
+                        '<input type="text" name="gender"><br>' +
+                        'age:<br>' +
+                        '<input type="text" name="age"><br>' +
+                        'description:<br>' +
+                        '<input type="text" name="description"><br>' +
+                        'target:<br>' +
+                        '<input type="text" name="target"><br>' +
+                        '<input type="button" class="receiver_cls" value="Submit" data-id=' + id + ' id="receiver_sub">' +
+                        '</form>'
+                        );
+                }
+                $(".receiver_cls").click(function(){
+                    var id = this.getAttribute('data-id');
+                    var form = new FormData(document.getElementById("receiver_form" + id));
+                    $.ajax({
+                        type: 'PUT',
+                        url: '/projects/' + project_id + '/receivers/' + id,
+                        data: form,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data, status) {
+                            alert("success");
+                        }
+                    });
+                });
             }
         });
-
     });
 });
